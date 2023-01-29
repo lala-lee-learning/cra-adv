@@ -33,9 +33,9 @@ const Cart = () => {
             <br/>
             <small className="text-muted">NT$ {item.price}</small>
           </td>
-          <td>
-            <select name="" id="" 
-              className="form-select" 
+          <td className="form-outline w-25">
+            <input type="number" name="" id=""
+              className="form-control"
               value={item.quantity}
               onChange={(e) => {
                 e.preventDefault();
@@ -49,12 +49,7 @@ const Cart = () => {
                 });
               }}
             >
-              {[...Array(20)].map((_, idx) => {
-                return (
-                  <option value={idx + 1} key={idx}>{idx + 1}</option>
-                )
-              })}
-            </select>
+            </input>
           </td>
           <td className="text-end">
             <span>NT$ {item.price * item.quantity}</span>
