@@ -65,7 +65,7 @@ const Cart = () => {
       <tfoot>
         <tr>
           <td colSpan={5} className="text-end">
-            <span>總金額 NT$ 400</span>
+            <span>總金額 NT$ {state.total || 0}</span>
           </td>
         </tr>
       </tfoot>

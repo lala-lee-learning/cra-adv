@@ -6,6 +6,11 @@ import { CartContext } from "./store";
 
 
 const App = () => {
+  const calculateTotalPrice = (cartList) => {
+    return cartList
+      .map((item) => item.quantity * item.price)
+      .reduce((prev, curr) => prev + curr, 0);
+  };
   const cartReducer = useReducer((state, action) => {
     const cartList = [...state.cartList];
     // #1 先取得當前購物車目標品項的索引
@@ -25,18 +30,21 @@ const App = () => {
         return {
           ...state,
           cartList,
+          total:calculateTotalPrice(cartList),
         };
       case 'CHANGE_CART_QUANTITY':
         cartList[index].quantity = quantity;
         return {
           ...state,
           cartList,
+          total:calculateTotalPrice(cartList),
         };
       case 'REMOVE_CART_ITEM':
         cartList.splice(index, 1);
         return {
           ...state,
           cartList,
+          total:calculateTotalPrice(cartList),
         };
       default:
         return state;
@@ -65,3 +73,5 @@ const App = () => {
 }
 
 export default App;
+
+
