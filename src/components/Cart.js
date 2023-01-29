@@ -22,7 +22,27 @@ const Cart = () => {
             <small className="text-muted">NT$ {item.price}</small>
           </td>
           <td>
-            <select name="" id="" className="form-select"></select>
+            <select name="" id="" 
+              className="form-select" 
+              value={item.quantity}
+              onChange={(e) => {
+                e.preventDefault();
+                const quantity = parseInt(e.target.value);
+                dispatch({
+                  type: "CHANGE_CART_QUANTITY",
+                  payload: {
+                    ...item,
+                    quantity,
+                  },
+                });
+              }}
+            >
+              {[...Array(20)].map((_, idx) => {
+                return (
+                  <option value={idx + 1} key={idx}>{idx + 1}</option>
+                )
+              })}
+            </select>
           </td>
           <td className="text-end">
             <span>NT$ {item.price * item.quantity}</span>

@@ -26,6 +26,12 @@ const App = () => {
           ...state,
           cartList,
         };
+      case 'CHANGE_CART_QUANTITY':
+        cartList[index].quantity = quantity;
+        return {
+          ...state,
+          cartList,
+        };
       default:
         return state;
     }
