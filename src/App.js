@@ -32,6 +32,12 @@ const App = () => {
           ...state,
           cartList,
         };
+      case 'REMOVE_CART_ITEM':
+        cartList.splice(index, 1);
+        return {
+          ...state,
+          cartList,
+        };
       default:
         return state;
     }
